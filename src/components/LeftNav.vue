@@ -28,6 +28,8 @@
 		width: 250px;
 		height: calc(100% - 120px);
 		float: left;
+		box-sizing: border-box;
+    	border-right: 1px #333 solid;
 	}
 	.leftNav{
 		width: 100%;

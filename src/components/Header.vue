@@ -17,7 +17,7 @@
 		data:function(){
 			return {
 				logo: 'assets/image/logo.png',
-				name:'1231233453534123123',
+				name:'xxx后台系统',
 				userInfo:{
 					userName:'pany',
 					userAva: 'assets/image/user1.jpg'
