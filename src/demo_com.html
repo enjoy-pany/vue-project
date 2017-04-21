@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='vue.js'></script>
+</head>
+<body>
+	<div id="app">
+		<update-file v-on:chooseCoverImg="getName"></update-file>
+		<button type='button' v-on:click="onSend">提交</button>
+	</div>
+</body>
+<script type="text/x-template" id="template">
+	<div>
+		<span class="forFile">
+			<button type="button">点击上传</button>
+			<p>{{fileName}}</p>
+			<input type="file" v-on:change="choosecoverimg">
+		</span>
+		<!--<div class="showImg"><img id="showImgs" /></div>
+		 <input type="hidden" class="hide" /> -->
+	</div>
+</script>
+<script>
+	Vue.component('updateFile', {
+		template: '#template',
+		data:function(){
+			return {
+				fileUrl: '',
+				fileName:''
+			}
+		},
+		methods:{
+			choosecoverimg: function (e) {
+				this.fileName = e.target.files[0].name
+				this.$emit('choosecoverimg',this.fileName)
+			}
+
+		}
+	})
+
+	var Data = {
+		configData:{
+	        one:{
+				bg:"",
+				title:"",
+				des:""
+			},
+			source:[{
+				subTitle:"",
+				textList:[
+					{
+						text:'',
+						audio:''
+					}
+				],
+				imgList:[
+					{
+						img:'',		
+						audio:''
+					}
+				]
+			}]
+		}
+	};
+
+	new Vue({
+		el:'#app',
+		data: function () {
+			return Data;
+		},
+		methods: {
+			getName: function (msg) {
+				this.configData.one.bg = msg;
+				console.log(this.configData)
+			},
+			onSend:function(){
+	    		var data = this.configData;
+	    		var _data = JSON.stringify(data);
+	    		console.log(_data)
+	    	}
+		}
+	})
+</script>
+</html>
