@@ -17,7 +17,7 @@
 		data:function(){
 			return {
 				logo: 'assets/image/logo.png',
-				name:'xxx后台系统',
+				name:'123123123',
 				userInfo:{
 					userName:'pany',
 					userAva: 'assets/image/user1.jpg'
@@ -45,8 +45,7 @@
 	.logo{
 		width: 80px;
 		height: 100%;
-		background: red;
-		padding: 0 5px;
+		padding: 0 30px;
     	border-right: 1px #333 solid;
 		img{
 			width: 100%;
@@ -56,7 +55,6 @@
 	.name{
 		width: calc(100% - 80px - 200px);
 		height: 100%;
-		background: blue;
 		box-sizing: border-box;
 		padding: 20px;
 		line-height: 40px;
@@ -66,7 +64,6 @@
 	.userInfo{
 		width: 200px;
 		height: 100%;
-		background: yellow;
 		.userAva{
 			width: 80px;
 			height: 100%;

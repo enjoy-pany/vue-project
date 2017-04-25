@@ -1,6 +1,8 @@
 <template>
 	<section>
-		<div class="rightShow"></div>
+		<div class="rightShow">
+			<router-view></router-view>
+		</div>
 	</section>
 </template>
 <!-- <script>

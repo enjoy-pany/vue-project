@@ -1,7 +1,9 @@
 <template>
 	<section>
 		<ul class="leftNav">
-			<li v-for="item in navList">{{item.navList_1}}</li>
+			<li v-for="item in navList">
+				<router-link :to="{path: item.path}">{{item.navList_1}}</router-link>
+			</li>
 		</ul>
 	</section>
 </template>
@@ -10,10 +12,10 @@
 		data:function(){
 			return {
 				navList:[
-					{navList_1: '导航一'},
-					{navList_1: '导航二'},
-					{navList_1: '导航三'},
-					{navList_1: '导航四'}
+					{navList_1: '导航一',path:'/nav1'},
+					{navList_1: '导航二',path:'/nav2'},
+					{navList_1: '导航三',path:'/nav3'},
+					{navList_1: '导航四',path:'/nav4'}
 				]
 			}
 		},
@@ -26,10 +28,11 @@
 <style style lang="sass" scoped>
 	section{
 		width: 250px;
-		height: calc(100% - 120px);
+		height: calc(100% - 100px);
 		float: left;
 		box-sizing: border-box;
     	border-right: 1px #333 solid;
+    	padding-top: 20px;
 	}
 	.leftNav{
 		width: 100%;
@@ -39,9 +42,12 @@
 			width: 100%;
 			line-height: 45px;
 			background: #fafafa;
-			margin: 20px 0;
+			margin-bottom: 20px;
 			text-align: center;
-			
+			a{
+				text-decoration: none;
+				color: #333;
+			}
 		}
 	}
 </style>
