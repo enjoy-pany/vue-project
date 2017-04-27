@@ -1,19 +1,12 @@
 import Vue from 'vue';
 import VueRes from 'vue-resource';
-import VueRouter from 'vue-router';
-import routes from  './router.js';
+import Element from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
 import App from './App.vue';
-// import './router.js';
+import router from  './router.js';
 
-
-
+Vue.use(Element)
 Vue.use(VueRes);//使用插件方式
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  routes // （缩写）相当于 routes: routes
-})
-
 
 new Vue({
     el: '#app',

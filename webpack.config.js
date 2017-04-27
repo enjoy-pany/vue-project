@@ -1,22 +1,42 @@
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/main.js",
   output: {
     path: __dirname + '/prd/',
     filename: "build.js"
   },
   module: {
     loaders: [
-      { test: /\.js$/,loader: "babel-loader" },
-      { test: /\.vue$/,loader: "vue-loader" },
-      { test: /\.css$/,loader: "vue-style-loader" },
-      { test: /\.s(a|c)ss$/,loader: "sass-loader" }
+      { 
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: /node_modules/
+      },
+      { 
+        test: /\.vue$/,
+        loader: "vue-loader" 
+      },
+      { 
+        test: /\.css$/,
+        loader: "vue-style-loader" 
+      },
+      { 
+        test: /\.s(a|c)ss$/,
+        loader: "sass-loader"
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+        loader: 'file-loader'
+      }
     ]
   },
   resolve: {
     extensions: ['.js', '.jsx'],
     alias: {'vue': 'vue/dist/vue.js'}
   },
-  plugins: [],
   devtool:'eval-source-map',
   devServer: {
     contentBase:  "./prd",//本地服务器所加载的页面所在的目录
