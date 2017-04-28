@@ -40,13 +40,13 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		border-bottom: 1px #333 solid;
+		border-bottom: 1px #d1d1d1 solid;
 	}
 	.logo{
 		width: 80px;
 		height: 100%;
 		padding: 0 30px;
-    	border-right: 1px #333 solid;
+    	border-right: 1px #d1d1d1 solid;
 		img{
 			width: 100%;
 			height: 100%
