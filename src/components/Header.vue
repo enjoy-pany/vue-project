@@ -67,6 +67,7 @@
 		.userAva{
 			width: 80px;
 			height: 100%;
+			border-radius: 80px;
 			float: right;
 			img{
 				width: 100%;

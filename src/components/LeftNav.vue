@@ -13,8 +13,8 @@
 		data:function(){
 			return {
 				navList:[
-					{navList_1: '导航一',path:'/nav1'},
-					{navList_1: '导航二',path:'/nav2'},
+					{navList_1: '信息查询',path:'/nav1'},
+					{navList_1: '课程预约',path:'/nav2'},
 					{navList_1: '导航三',path:'/nav3'},
 					{navList_1: '导航四',path:'/nav4'}
 				],

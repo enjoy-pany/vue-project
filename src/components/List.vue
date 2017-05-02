@@ -1,45 +1,92 @@
 <template>
-  <el-table
-    :data="tableData"
-    style="width: 100%">
-    <el-table-column
-      prop="date"
-      label="日期"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="address"
-      label="地址">
-    </el-table-column>
-  </el-table>
+  <div>
+    <el-form  :label-position="labelPosition" ref="formData" :model="formData" label-width="200px">
+      <el-form-item label="Input user_name for t_id:">
+        <el-input
+          placeholder="user_name for teacher"
+          icon="search"
+          v-model="formData.input1"
+          :on-icon-click="teaSeachClick">
+        </el-input>
+      </el-form-item>
+      <el-form-item label="Input user_name for  s_id:">
+        <el-input
+          placeholder="user_name for student"
+          icon="search"
+          v-model="formData.input2"
+          :on-icon-click="stuSeachClick">
+        </el-input>
+      </el-form-item>
+    </el-form>
+
+    <el-table
+      :data="tableData"
+      style="width: 100%">
+      <el-table-column
+        prop="id"
+        label="ID"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="user_name"
+        label="user_name"
+        width="180">
+      </el-table-column>
+      <el-table-column
+        prop="s_id"
+        label="s_id">
+      </el-table-column>
+      <el-table-column
+        prop="t_id"
+        label="t_id">
+      </el-table-column>
+    </el-table>
+  </div>
 </template>
 
 <script>
   export default {
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }]
+        formData: {
+          input1: '',
+          input2: '',
+        },
+        labelPosition: 'top',
+        tableData: [],
+        domain: 'http://172.16.20.25:3000/users/'
+      }
+    },
+    methods: {
+      teaSeachClick(ev) {
+        console.log(ev);
+        let userName = this.formData.input1;
+        this.$http.get(this.domain + 'queryByTeacher?user_name='+userName )
+        .then((res)=>{
+          console.log(res)
+          if(res.data.length == 0){
+            alert('输入的用户信息不存在！')
+          }else{
+            this.tableData.push({id: this.tableData.length+1,user_name: userName,s_id:'',t_id: res.data[0].id})
+          }
+        }, (err)=>{
+          console.log(err)
+        }); 
+      },
+      stuSeachClick(ev) {
+        console.log(ev);
+        let userName = this.formData.input2;
+        this.$http.get(this.domain + 'queryByUser?user_name='+userName )
+        .then((res)=>{
+          console.log(res)
+          if(res.data.length == 0){
+            alert('输入的用户信息不存在！')
+          }else{
+            this.tableData.push({id: this.tableData.length+1,user_name: userName,s_id:res.data[0].id,t_id: ''})
+          }
+        }, (err)=>{
+          console.log(err)
+        }); 
       }
     }
   }

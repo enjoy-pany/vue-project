@@ -1,3 +1,4 @@
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
   entry: "./src/main.js",
   output: {
@@ -37,6 +38,9 @@ module.exports = {
     extensions: ['.js', '.jsx'],
     alias: {'vue': 'vue/dist/vue.js'}
   },
+  plugins: [
+        new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+  ],
   devtool:'eval-source-map',
   devServer: {
     contentBase:  "./prd",//本地服务器所加载的页面所在的目录
