@@ -1,8 +1,8 @@
 <template>
 	<section>
 		<ul class="leftNav">
-			<li v-for="item in navList">
-				<i v-bind:class="classObject"  v-on:click="active"></i>
+			<li v-for="(item, index) in navList">
+				<i v-bind:class="{'el-icon-caret-bottom': item.ac, 'el-icon-caret-right': !item.ac}"  v-on:click="active(item, index)"></i>
 				<router-link :to="{path: item.path}">{{item.navList_1}}</router-link>
 			</li>
 		</ul>
@@ -13,29 +13,16 @@
 		data:function(){
 			return {
 				navList:[
-					{navList_1: '信息查询',path:'/nav1'},
-					{navList_1: '课程预约',path:'/nav2'},
-					{navList_1: '导航三',path:'/nav3'},
-					{navList_1: '导航四',path:'/nav4'}
-				],
-				isActive: true
+					{navList_1: '信息查询',path:'/nav1', ac: false},
+					{navList_1: '课程预约',path:'/nav2', ac: false},
+					{navList_1: '导航三',path:'/nav3', ac: false},
+					{navList_1: '导航四',path:'/nav4', ac: false}
+				]
 			}
 		},
 		methods:{
-			active: function(){
-				if(this.isActive == true){
-					this.isActive = false
-				}else{
-					this.isActive = true
-				}
-			}
-		},
-		computed: {
-			classObject: function(){
-				return {
-					"el-icon-caret-right": this.isActive,
-					"el-icon-caret-bottom": !this.isActive
-				}
+			active: function(item, index){
+				item.ac = !item.ac
 			}
 		}
 	}
