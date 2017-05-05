@@ -54,7 +54,7 @@
         },
         labelPosition: 'top',
         tableData: [],
-        domain: 'http://172.16.20.25:3000/users/'
+        domain: 'http://127.0.0.1:3000/users/'
       }
     },
     methods: {
