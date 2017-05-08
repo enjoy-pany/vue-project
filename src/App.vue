@@ -1,60 +1,25 @@
 <template>
 	<div id="app">
 		<headMain></headMain>
-		<leftNav></leftNav>
-		<rightShow></rightShow>
-		<!-- <bg v-on:choosecoverimg="getName"></bg>
-		<button type='button' v-on:click="onSend">提交</button> -->
+		<div class="router">
+			<router-view></router-view>
+		</div>
 	</div>
 </template>
 <script>
-	import bg from './components/uploadbg.vue';
-	import headMain from './components/Header.vue';
-	import leftNav from './components/LeftNav.vue';
-	import rightShow from './components/RightShow.vue';
+	import headMain from './components/common/Header.vue';
 	var Data = {
-		configData:{
-	        one:{
-				bg:"",
-				title:"",
-				des:""
-			},
-			source:[{
-				subTitle:"",
-				textList:[
-					{
-						text:'',
-						audio:''
-					}
-				],
-				imgList:[
-					{
-						img:'',		
-						audio:''
-					}
-				]
-			}]
-		}
+
 	};
 	export default {
 		components: {
-			bg,
-			headMain,
-			leftNav,
-			rightShow
+			headMain
 		},
 		data: function () {
 			return Data;
 		},
 		methods:{
-			getName: function (msg) {
-				this.configData.one.bg = msg;
-			},
-			onSend:function(){
-	    		var data = this.configData;
-	    		var _data = JSON.stringify(data);
-	    		console.log(_data)
-	    	}
+
 		}
 	}
 </script>
@@ -64,6 +29,9 @@
 		margin: 0;
 		padding: 0
 	}
+	li{
+		list-style: none;
+	}
 	html,body{
 		width: 100%;
 		height: 100%
@@ -72,5 +40,13 @@
 		width: 100%;
 		height: 100%;
 		background-color: #fafafa;
+	}
+	.router{
+		width: 100%;
+		height: calc(100% - 100px);
+	}
+	.rightShow{
+		width: 100%;
+		height: 100%;
 	}
 </style>

@@ -13,10 +13,10 @@
 		data:function(){
 			return {
 				navList:[
-					{navList_1: '信息查询',path:'/nav1', ac: false},
-					{navList_1: '课程预约',path:'/nav2', ac: false},
-					{navList_1: '导航三',path:'/nav3', ac: false},
-					{navList_1: '导航四',path:'/nav4', ac: false}
+					{navList_1: '信息查询',path:'/todolist/todolist_1', ac: false},
+					{navList_1: '课程预约',path:'/todolist/todolist_2', ac: false},
+					{navList_1: '导航三',path:'/todolist/todolist_3', ac: false},
+					{navList_1: '导航四',path:'/todolist/todolist_4', ac: false}
 				]
 			}
 		},
@@ -31,7 +31,7 @@
 <style style lang="sass" scoped>
 	section{
 		width: 250px;
-		height: calc(100% - 100px);
+		height: 100%;
 		float: left;
 		box-sizing: border-box;
     	border-right: 1px #d1d1d1 solid;

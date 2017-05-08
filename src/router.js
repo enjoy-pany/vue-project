@@ -1,22 +1,43 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import list from './components/List.vue';
-import form from './components/Form.vue';
-import register from './components/Register.vue';
+
+import regindex from './components/RegIndex.vue';
+import todoList from './components/TodoList.vue';
+
+import list from './components/Todo/List.vue';
+import form from './components/Todo/Form.vue';
+const todoList_3 = { template: '<div>nav3</div>' }
+const todoList_4 = { template: '<div>nav4</div>' }
 
 Vue.use(VueRouter);
 
-//const nav1 = { template: List }
-//const nav2 = { template: '<div>nav2</div>' }
-//const nav3 = { template: '<div>nav3</div>' }
-const nav4 = { template: '<div>nav4</div>' }
-
 const routes = [
-  { path: '/', component: list },
-  { path: '/nav1', component: list },
-  { path: '/nav2', component: form },
-  { path: '/nav3', component: register },
-  { path: '/nav4', component: nav4 }
+  { 
+    path: '/',
+    component: regindex 
+  },
+  { 
+    path: '/todolist',
+    component: todoList,
+    children: [
+        {
+            path: 'todolist_1',
+            component: list,
+        },
+        {
+            path: 'todolist_2',
+            component: form,
+        },
+        {
+            path: 'todolist_3',
+            component: todoList_3,
+        },
+        {
+            path: 'todolist_4',
+            component: todoList_4,
+        }
+    ]
+  }
 ]
 
 export default new VueRouter({
