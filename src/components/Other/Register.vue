@@ -18,7 +18,7 @@
     <el-form-item label="上传头像">
       <el-upload
         class="avatar-uploader"
-        action="//jsonplaceholder.typicode.com/posts/"
+        action="http://172.16.0.107:9011/pages/159/file"
         :show-file-list="false"
         :on-success="handleAvatarScucess"
         :before-upload="beforeAvatarUpload">
@@ -72,7 +72,8 @@
           imageUrl: '',
           desc: ''
         },
-        domain: 'http://127.0.0.1:3000/users/'
+        domain: 'http://127.0.0.1:3000/users/',
+        imgUrl: 'http://172.16.0.107:9011/pages/159/'
       }
     },
     methods: {
@@ -92,13 +93,15 @@
             message: '恭喜你，注册成功！',
             type: 'success'
           });
+          this.$router.push('/')
         }, (err)=>{
            this.$message.error('注册失败！');
         }); 
       },
       handleAvatarScucess(res, file) {
         console.log(res,file)
-        this.form.imageUrl = URL.createObjectURL(file.raw);
+        //this.form.imageUrl = URL.createObjectURL(file.raw);
+        this.form.imageUrl = this.imgUrl + res.data.key;
       },
       beforeAvatarUpload(file) {
         const isJPG = file.type === 'image/jpeg';

@@ -1,16 +1,16 @@
 <template>
 	<div class='reg'>
-		<regMain></regMain>
+		<logMain></logMain>
 	</div>
 </template>
 <script>
-	import regMain from './Other/Register.vue';
+	import logMain from './Other/Login.vue';
 	var Data = {
 		
 	};
 	export default {
 		components: {
-			regMain
+			logMain
 		},
 		data: function () {
 			return Data;

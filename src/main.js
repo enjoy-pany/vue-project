@@ -13,6 +13,11 @@ Vue.http.options.headers = {
   'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
 };
 
+router.beforeEach((to, from, next) => {
+  console.log(to,from);
+  next()
+})
+
 new Vue({
     el: '#app',
     router,

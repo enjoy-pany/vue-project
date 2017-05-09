@@ -6,9 +6,9 @@
 		<div class="name">{{name}}</div>
 		<div class="userInfo">
 			<div class="userAva">
-				<img v-bind:src="userInfo.userAva" alt="">
+				<img v-bind:src="user.userAva" alt="">
 			</div>
-			<div class="userName">{{userInfo.userName}}</div>
+			<div class="userName">{{user.userName}}</div>
 		</div>
 	</header>
 </template>
@@ -18,14 +18,12 @@
 			return {
 				logo: 'assets/image/logo.png',
 				name:'123123123',
-				userInfo:{
-					userName:'pany',
-					userAva: 'assets/image/user1.jpg'
-				},
+				user: this.userInfo
 			}
 		},
-		methods:{
-
+		props:['userInfo'],
+		updated: function(){
+			console.log(this.userInfo)
 		}
 	}
 
@@ -69,6 +67,7 @@
 			height: 100%;
 			border-radius: 80px;
 			float: right;
+			overflow: hidden;
 			img{
 				width: 100%;
 				height: 100%;

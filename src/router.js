@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import regindex from './components/RegIndex.vue';
+import logindex from './components/LoginIndex.vue';
 import todoList from './components/TodoList.vue';
 
 import list from './components/Todo/List.vue';
@@ -14,6 +15,10 @@ Vue.use(VueRouter);
 const routes = [
   { 
     path: '/',
+    component: logindex 
+  },
+  { 
+    path: '/register',
     component: regindex 
   },
   { 
