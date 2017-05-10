@@ -1,4 +1,5 @@
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const webpack = require('webpack');
 module.exports = {
   entry: "./src/main.js",
   output: {
@@ -39,7 +40,12 @@ module.exports = {
     alias: {'vue': 'vue/dist/vue.js'}
   },
   plugins: [
-        new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+        new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
+        // new webpack.optimize.UglifyJsPlugin({//压缩js插件
+        //   compress: {
+        //     warnings: false
+        //   }
+        // })
   ],
   devtool:'eval-source-map',
   devServer: {
