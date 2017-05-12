@@ -7,37 +7,46 @@ import todoList from './components/TodoList.vue';
 
 import list from './components/Todo/List.vue';
 import form from './components/Todo/Form.vue';
-const todoList_3 = { template: '<div>nav3</div>' }
+import search from './components/Todo/Search.vue';
+
+//const todoList_3 = { template: '<div>nav3</div>' }
 const todoList_4 = { template: '<div>nav4</div>' }
 
 Vue.use(VueRouter);
 
 const routes = [
   { 
+    name: 'logindex',
     path: '/',
     component: logindex 
   },
   { 
+    name: 'regindex',
     path: '/register',
     component: regindex 
   },
   { 
+    name: 'todoList',
     path: '/todolist',
     component: todoList,
     children: [
         {
+            name: 'search',
             path: 'todolist_1',
-            component: list,
+            component: search,
         },
         {
+            name: 'form',
             path: 'todolist_2',
             component: form,
         },
         {
+            name: 'list',
             path: 'todolist_3',
-            component: todoList_3,
+            component: list,
         },
         {
+            name: 'todoList_4',
             path: 'todolist_4',
             component: todoList_4,
         }

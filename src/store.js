@@ -4,44 +4,19 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state:{
-        massage:"",
-        aTodos:[{value:"默认默认",id:0}],
-    },
-    getters:{
-        nCounts(state){
-            return state.aTodos.length;
-        }
+        userName:"",
+        userAva:"",
     },
     mutations:{
         //新増 TodoList item
-        ONADDTODO(state,item){
-            state.aTodos.push(item);
-        },
-        //删除 TodoList item
-        ONDELTODO(state,index){
-            state.aTodos.splice(index,1);
-        },
-        //设置 错误提示信息
-        ONERROR(state,str){
-            state.massage=str;
+        getLocalMes(state,item){
+            const storage=window.localStorage;
+            let loginUser = JSON.parse(storage.getItem('userInfo'));
+            state.userName = loginUser.loginName;
+            state.userAva = loginUser.loginNav;
         }
     },
-    actions:{
-        //提交 ONADDTODO
-        onAddTodo(context,item){
-            if(item.value!=""){
-                context.commit("ONADDTODO",item);
-                context.commit("ONERROR","");
-            }else{
-                context.commit("ONERROR","添加失败")
-            }
-        },
-        //提交 ONDELTODO
-        onDelTodo({commit},index){
-            commit("ONDELTODO",index);
-        }
-
-    },
+    actions:{},
     modules:{}
 });
 

@@ -62,6 +62,7 @@
 	.userInfo{
 		width: 200px;
 		height: 100%;
+		margin-right: 20px;
 		.userAva{
 			width: 80px;
 			height: 100%;

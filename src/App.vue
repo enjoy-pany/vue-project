@@ -22,17 +22,19 @@
 			return Data;
 		},
 		updated: function(){
-			const storage=window.localStorage;
-			let loginUser = JSON.parse(storage.getItem('userInfo'));
-			this.userInfo.userName = loginUser.loginName;
-			this.userInfo.userAva = loginUser.loginNav;
+			this.getLocalMes();
 		},
 		mounted: function(){
-			const storage=window.localStorage;
-			let loginUser = JSON.parse(storage.getItem('userInfo'));
-			if(loginUser!= undefined){
-				this.userInfo.userName = loginUser.loginName;
-				this.userInfo.userAva = loginUser.loginNav;
+			this.getLocalMes();
+		},
+		methods: {
+			getLocalMes: function(){
+				const storage=window.localStorage;
+				let loginUser = JSON.parse(storage.getItem('userInfo'));
+				if(loginUser != undefined){
+					this.userInfo.userName = loginUser.loginName;
+					this.userInfo.userAva = loginUser.loginNav;
+				}
 			}
 		}
 	}

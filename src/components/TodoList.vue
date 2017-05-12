@@ -1,11 +1,9 @@
 <template>
 	<div class="todoList">
 		<leftNav></leftNav>
-		<section>
-			<div class="rightShow">
-				<router-view></router-view>
-			</div>
-		</section>
+		<div class="rightShow">
+			<router-view></router-view>
+		</div>
 	</div>
 </template>
 <script>
@@ -27,11 +25,11 @@
 		width: 100%;
 		height: 100%;
 	}
-	section{
+	.rightShow{
 		width: calc(100% - 250px);
-		height: calc(100% - 100px);
+		height: 100%;
 		box-sizing: border-box;
-		padding: 20px;
+		padding: 40px;
 		float: right;
 	}
 </style>
