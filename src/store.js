@@ -4,16 +4,17 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state:{
-        userName:"",
-        userAva:"",
+        userName:"未登录",
+        userAva:"assets/image/defaultAva.jpg",
     },
     mutations:{
-        //新増 TodoList item
         getLocalMes(state,item){
             const storage=window.localStorage;
             let loginUser = JSON.parse(storage.getItem('userInfo'));
-            state.userName = loginUser.loginName;
-            state.userAva = loginUser.loginNav;
+            if(loginUser){
+                state.userName = loginUser.loginName;
+                state.userAva = loginUser.loginNav;
+            }
         }
     },
     actions:{},

@@ -2,7 +2,7 @@
   <div class="ListCon">
       <div class="addListBnt">
         <el-button type="text" @click="dialogVisible = true">点击添加 Card</el-button>
-        <el-dialog title="提示" v-model="dialogVisible">
+        <el-dialog @open="openCard()" @close="closeCard()" title="提示" v-model="dialogVisible">
 
           <el-form :model="form">
             <el-form-item label="名称" :label-width="formLabelWidth">
@@ -58,8 +58,8 @@
   export default {
     data() {
       return {
-        userAva: 'assets/image/defaultAva.jpg',
-        userName: 'Pany',
+        // userName: '',
+        // userAva: '', 
         dialogVisible: false,
         pickerOptions0: {
           disabledDate(time) {
@@ -117,6 +117,30 @@
       },
       cardDetail: function(item){
         console.log(item)
+      },
+      closeCard: function(){
+        console.log('close')
+      },
+      openCard: function(){
+        console.log('open')
+      }
+    },
+    updated: function(){
+      this.$store.commit('getLocalMes');
+    },
+    mounted: function(){
+      this.$store.commit('getLocalMes');
+      // this.$nextTick(()=>{//更新state的另一种方法，区别于computed方式
+      //   this.userName = this.$store.state.userName;
+      //   this.userAva = this.$store.state.userAva;
+      // });
+    },
+    computed: {
+      userAva: function () {
+        return this.$store.state.userAva;
+      },
+      userName: function () {
+        return this.$store.state.userName;
       }
     }
   }
@@ -159,6 +183,7 @@
     left: 50%;
     top: 25%;
     transform: translate(-50%,-50%);
+    overflow: hidden;
   }
   .userName{
     width: 100%;
