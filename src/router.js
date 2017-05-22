@@ -8,9 +8,10 @@ import todoList from './components/TodoList.vue';
 import list from './components/Todo/List.vue';
 import form from './components/Todo/Form.vue';
 import search from './components/Todo/Search.vue';
+import charts from './components/Todo/Charts.vue';
 
 //const todoList_3 = { template: '<div>nav3</div>' }
-const todoList_4 = { template: '<div>nav4</div>' }
+//const todoList_4 = { template: '<div>nav4</div>' }
 
 Vue.use(VueRouter);
 
@@ -46,9 +47,9 @@ const routes = [
             component: list,
         },
         {
-            name: 'todoList_4',
+            name: 'charts',
             path: 'todolist_4',
-            component: todoList_4,
+            component: charts,
         }
     ]
   }

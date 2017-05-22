@@ -16,7 +16,7 @@
 					{navList_1: '信息查询',path:'/todolist/todolist_1', ac: false},
 					{navList_1: '课程预约',path:'/todolist/todolist_2', ac: false},
 					{navList_1: '事务列表',path:'/todolist/todolist_3', ac: false},
-					{navList_1: '导航四',path:'/todolist/todolist_4', ac: false}
+					{navList_1: '图表信息',path:'/todolist/todolist_4', ac: false}
 				]
 			}
 		},
