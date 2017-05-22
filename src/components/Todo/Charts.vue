@@ -3,7 +3,7 @@
     <div id="main" style="width: 600px;height: 400px;"></div>
     <div class="btn">
       <span class="wrapper">
-        <el-button type="success">更新</el-button>
+        <el-button type="success" v-on:click='upData'>更新</el-button>
         <el-button type="danger">删除</el-button>
         <el-button type="info" v-on:click='addData'>添加</el-button>
       </span>
@@ -24,7 +24,8 @@
           {value:234, name:'北京'},
           {value:135, name:'天津'},
           {value:1548, name:'深圳'}
-        ]
+        ],
+        domain: 'http://127.0.0.1:3000/users/'
       }
     },
     methods:{
@@ -63,6 +64,28 @@
         this.$nextTick(function() {
             this.drawBar('main')
         })
+      },
+      upData () {
+        this.opinion = []
+        this.opinionData = []
+        this.$http.get(this.domain + 'getCharsData')
+        .then((res)=>{
+          if(res.data.length == 0){
+            alert('刷新失败！')
+          }else{
+            console.log(res)
+            for(let i in res.data){
+              this.opinion.push(res.data[i].city);
+              this.opinionData.push({value: res.data[i].price, name: res.data[i].city})
+            }
+            console.log(this.opinion)
+            this.$nextTick(function() {
+                this.drawBar('main')
+            })
+          }
+        }, (err)=>{
+          console.log(err)
+        });
       } 
     },
     mounted () {
