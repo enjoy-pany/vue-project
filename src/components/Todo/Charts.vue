@@ -17,13 +17,14 @@
     data () {
       return {
         charts: '',
-        opinion:['石家庄','承德','北京','天津','深圳'],
+        opinion:['石家庄','武汉','北京','天津','成都','郑州'],
         opinionData:[
-          {value:335, name:'石家庄'},
-          {value:310, name:'承德'},
-          {value:234, name:'北京'},
-          {value:135, name:'天津'},
-          {value:1548, name:'深圳'}
+          {value:0, name:'石家庄'},
+          {value:0, name:'武汉'},
+          {value:0, name:'北京'},
+          {value:0, name:'天津'},
+          {value:0, name:'成都'},
+          {value:0, name:'郑州'}
         ],
         domain: 'http://127.0.0.1:3000/users/'
       }
@@ -33,7 +34,7 @@
         this.charts = echarts.init(document.getElementById(id))
         this.charts.setOption({
          title: {
-          text: '房价走势图',
+          text: '五月份参考均价图',
           left: 'center'
          },
          tooltip: {
@@ -43,7 +44,7 @@
          legend: {
            orient: 'vertical',
            x: 'left',
-           data:['房价']
+           data:['房价(元/平米)']
          },
          xAxis: {
             data: this.opinion
@@ -51,7 +52,7 @@
          yAxis: {},
          series: [
            {
-             name:'房价',
+             name:'房价(元/平米)',
              type:'bar',
              data:this.opinionData
            }
@@ -89,6 +90,7 @@
       } 
     },
     mounted () {
+      this.upData();
       this.$nextTick(function() {
           this.drawBar('main')
       })
